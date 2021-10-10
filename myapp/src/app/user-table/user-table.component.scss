@@ -1,0 +1,26 @@
+.table {
+  border-collapse: collapse;
+}
+
+.heading {
+  position: relative;
+  width: 200px;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.cell {
+  text-align: left;
+  border: 1px solid black;
+}
+
+.sort-btn {
+  height: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.search {
+  margin: 5px 0;
+}

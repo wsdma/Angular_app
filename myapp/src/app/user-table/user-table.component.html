@@ -1,0 +1,40 @@
+<form>
+  <input
+    placeholder="Search for..."
+    class="search"
+    type="text"
+    (input)="searchInData($event)"
+  />
+  <label for="">
+    Names
+    <input checked type="radio" name="name" id="name" />
+  </label>
+  <label for="">
+    Usernames
+    <input type="radio" name="username" id="username" />
+  </label>
+  <label for="">
+    Emails
+    <input type="radio" name="email" id="email" />
+  </label>
+</form>
+
+<!-- table -->
+<table *ngIf="users; else loadingBlock" class="table">
+  <th class="heading">
+    Name <button class="sort-btn" (click)="sortData('name')">sort</button>
+  </th>
+  <th class="heading">
+    Username
+    <button class="sort-btn" (click)="sortData('username')">sort</button>
+  </th>
+  <th class="heading">
+    Email <button class="sort-btn" (click)="sortData('email')">sort</button>
+  </th>
+  <tr *ngFor="let user of users">
+    <td class="cell">{{ user.name }}</td>
+    <td class="cell">{{ user.username }}</td>
+    <td class="cell">{{ user.email }}</td>
+  </tr>
+</table>
+<ng-template #loadingBlock><h2>Loading data...</h2></ng-template>
