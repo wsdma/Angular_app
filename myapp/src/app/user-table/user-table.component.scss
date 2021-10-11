@@ -7,11 +7,19 @@
   width: 200px;
   text-align: center;
   border: 1px solid black;
+
+  &:first-child {
+    width: 20px;
+  }
 }
 
 .cell {
   text-align: left;
   border: 1px solid black;
+
+  &:first-child {
+    text-align: center;
+  }
 }
 
 .sort-btn {
@@ -21,6 +29,6 @@
   right: 0;
 }
 
-.search {
+.form {
   margin: 5px 0;
 }

@@ -1,26 +1,22 @@
-<form>
-  <input
-    placeholder="Search for..."
-    class="search"
-    type="text"
-    (input)="searchInData($event)"
-  />
-  <label for="">
+<form [formGroup]="searchControl" class="form">
+  <input formControlName="search" placeholder="Search for..." />
+  <label>
+    <input type="radio" value="name" formControlName="radioInput" />
     Names
-    <input checked type="radio" name="name" id="name" />
   </label>
-  <label for="">
+  <label>
+    <input type="radio" value="username" formControlName="radioInput" />
     Usernames
-    <input type="radio" name="username" id="username" />
   </label>
-  <label for="">
+  <label>
+    <input type="radio" value="email" formControlName="radioInput" />
     Emails
-    <input type="radio" name="email" id="email" />
   </label>
 </form>
 
 <!-- table -->
 <table *ngIf="users; else loadingBlock" class="table">
+  <th class="heading">№</th>
   <th class="heading">
     Name <button class="sort-btn" (click)="sortData('name')">sort</button>
   </th>
@@ -31,7 +27,8 @@
   <th class="heading">
     Email <button class="sort-btn" (click)="sortData('email')">sort</button>
   </th>
-  <tr *ngFor="let user of users">
+  <tr *ngFor="let user of users; let i = index">
+    <td class="cell">{{ i + 1 }}</td>
     <td class="cell">{{ user.name }}</td>
     <td class="cell">{{ user.username }}</td>
     <td class="cell">{{ user.email }}</td>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-user-table',
@@ -9,13 +10,24 @@ import { DataService } from '../data.service';
 export class UserTableComponent implements OnInit {
   public users: any;
   private _usersOrigData: any;
-  constructor(private _dataService: DataService) {}
+  public searchControl: FormGroup;
 
-  searchInData(event: any) {
+  constructor(private _dataService: DataService) {
+    this.searchControl = new FormGroup({
+      search: new FormControl(),
+      radioInput: new FormControl('name'),
+    });
+  }
+
+  searchInData(searchData: string, searchColoumn: string) {
+    if (!searchData) {
+      this.users = this._usersOrigData;
+      return;
+    }
     this.users = this._usersOrigData;
     let temp = this.users;
     this.users = temp.filter((user: any) =>
-      user.name.toLowerCase().includes(event.target.value)
+      user[searchColoumn].toLowerCase().includes(searchData)
     );
   }
 
@@ -32,6 +44,9 @@ export class UserTableComponent implements OnInit {
     this._dataService.getData().subscribe((data) => {
       this.users = data;
       this._usersOrigData = data;
+    });
+    this.searchControl.valueChanges.subscribe((value) => {
+      this.searchInData(value.search, value.radioInput);
     });
   }
 }
