@@ -6,9 +6,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { DataService } from './data.service';
 import { UserTableComponent } from './user-table/user-table.component';
+import { SearchFormComponent } from './search-form/search-form.component';
 
 @NgModule({
-  declarations: [AppComponent, UserTableComponent],
+  declarations: [AppComponent, UserTableComponent, SearchFormComponent],
   imports: [BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [DataService],
   bootstrap: [AppComponent],
