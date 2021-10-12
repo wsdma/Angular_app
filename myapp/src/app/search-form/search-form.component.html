@@ -1,1 +1,15 @@
-<p>search-form works!</p>
+<form [formGroup]="searchControl" class="form">
+  <input formControlName="search" placeholder="Search for..." />
+  <label>
+    <input type="radio" value="name" formControlName="radioInput" />
+    Names
+  </label>
+  <label>
+    <input type="radio" value="username" formControlName="radioInput" />
+    Usernames
+  </label>
+  <label>
+    <input type="radio" value="email" formControlName="radioInput" />
+    Emails
+  </label>
+</form>

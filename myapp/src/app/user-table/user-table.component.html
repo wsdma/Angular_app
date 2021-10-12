@@ -1,33 +1,16 @@
-<form [formGroup]="searchControl" class="form">
-  <input formControlName="search" placeholder="Search for..." />
-  <label>
-    <input type="radio" value="name" formControlName="radioInput" />
-    Names
-  </label>
-  <label>
-    <input type="radio" value="username" formControlName="radioInput" />
-    Usernames
-  </label>
-  <label>
-    <input type="radio" value="email" formControlName="radioInput" />
-    Emails
-  </label>
-</form>
-
-<!-- table -->
-<table *ngIf="users$; else loadingBlock" class="table">
+<table *ngIf="users; else loadingBlock" class="table">
   <th class="heading">№</th>
   <th class="heading">
-    Name <button class="sort-btn" (click)="sortData('name')">sort</button>
+    Name <button class="sort-btn" (click)="sortDataBy('name')">sort</button>
   </th>
   <th class="heading">
     Username
-    <button class="sort-btn" (click)="sortData('username')">sort</button>
+    <button class="sort-btn" (click)="sortDataBy('username')">sort</button>
   </th>
   <th class="heading">
-    Email <button class="sort-btn" (click)="sortData('email')">sort</button>
+    Email <button class="sort-btn" (click)="sortDataBy('email')">sort</button>
   </th>
-  <tr *ngFor="let user of users$; let i = index">
+  <tr *ngFor="let user of users | async; let i = index">
     <td class="cell">{{ i + 1 }}</td>
     <td class="cell">{{ user.name }}</td>
     <td class="cell">{{ user.username }}</td>

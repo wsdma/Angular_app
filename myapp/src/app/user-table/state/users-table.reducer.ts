@@ -1,6 +1,7 @@
-import { loadUsersSucces, sortUsers } from './users-table.action';
+import { loadUsersSucces, sortUsersBy } from './users-table.action';
 import { createReducer, on } from '@ngrx/store';
 import { initialState } from 'src/app/user-table/state/users-table.state';
+import { searchInUsersTable } from './users-table.action';
 
 const _usersTableReducer = createReducer(
   initialState,
@@ -10,13 +11,23 @@ const _usersTableReducer = createReducer(
       users: action.users,
     };
   }),
-  on(sortUsers, (state, action) => {
+  on(sortUsersBy, (state, action) => {
     return {
       ...state,
-      users: state.users.sort((a: any, b: any) => {
+      users: [...state.users].sort((a: any, b: any) => {
         if (a[action.columnName] < b[action.columnName]) return -1;
         if (a[action.columnName] > b[action.columnName]) return 1;
         return 0;
+      }),
+    };
+  }),
+  on(searchInUsersTable, (state, action) => {
+    return {
+      ...state,
+      users: [...state.users].filter((user: any) => {
+        return user[action.searchColoumn]
+          .toLowerCase()
+          .includes(action.searchData);
       }),
     };
   })

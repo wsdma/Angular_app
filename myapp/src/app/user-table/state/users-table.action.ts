@@ -10,7 +10,13 @@ export const loadUsersSucces = createAction(
   LOAD_USERS_SUCCES,
   props<{ users: User[] }>()
 );
-export const sortUsers = createAction(
+export const sortUsersBy = createAction(
   SORT_USERS,
   props<{ columnName: string }>()
+);
+export const SEARCH_DATA = '[search-form] search data';
+
+export const searchInUsersTable = createAction(
+  SEARCH_DATA,
+  props<{ searchData: string; searchColoumn: string }>()
 );
