@@ -1,5 +1,10 @@
 <form [formGroup]="searchControl" class="form">
-  <input formControlName="search" placeholder="Search for..." />
+  <input
+    autofocus
+    type="text"
+    formControlName="search"
+    placeholder="Search for..."
+  />
   <label>
     <input type="radio" value="name" formControlName="radioInput" />
     Names

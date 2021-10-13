@@ -1,4 +1,8 @@
-import { loadUsersSucces, sortUsersBy } from './users-table.action';
+import {
+  loadUsersSucces,
+  sortUsersBy,
+  setOriginUsersList,
+} from './users-table.action';
 import { createReducer, on } from '@ngrx/store';
 import { initialState } from 'src/app/user-table/state/users-table.state';
 import { searchInUsersTable } from './users-table.action';
@@ -8,6 +12,7 @@ const _usersTableReducer = createReducer(
   on(loadUsersSucces, (state, action) => {
     return {
       ...state,
+      usersFetchedData: action.users,
       users: action.users,
     };
   }),
@@ -29,6 +34,12 @@ const _usersTableReducer = createReducer(
           .toLowerCase()
           .includes(action.searchData);
       }),
+    };
+  }),
+  on(setOriginUsersList, (state) => {
+    return {
+      ...state,
+      users: state.usersFetchedData,
     };
   })
 );

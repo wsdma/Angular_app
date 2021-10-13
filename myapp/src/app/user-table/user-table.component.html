@@ -1,14 +1,14 @@
 <table *ngIf="users; else loadingBlock" class="table">
   <th class="heading">№</th>
   <th class="heading">
-    Name <button class="sort-btn" (click)="sortDataBy('name')">sort</button>
+    Name <button class="sort-btn" (click)="sortDataBy('name')">Sort</button>
   </th>
   <th class="heading">
     Username
-    <button class="sort-btn" (click)="sortDataBy('username')">sort</button>
+    <button class="sort-btn" (click)="sortDataBy('username')">Sort</button>
   </th>
   <th class="heading">
-    Email <button class="sort-btn" (click)="sortDataBy('email')">sort</button>
+    Email <button class="sort-btn" (click)="sortDataBy('email')">Sort</button>
   </th>
   <tr *ngFor="let user of users | async; let i = index">
     <td class="cell">{{ i + 1 }}</td>

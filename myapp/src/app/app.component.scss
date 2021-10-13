@@ -1,0 +1,9 @@
+h1 {
+  margin: 5px;
+  color: green;
+  text-decoration: underline;
+
+  &:hover {
+    color: blue;
+  }
+}

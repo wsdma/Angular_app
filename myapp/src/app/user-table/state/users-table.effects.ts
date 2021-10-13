@@ -3,11 +3,14 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, mergeMap } from 'rxjs/operators';
 import { loadUsers } from 'src/app/user-table/state/users-table.action';
-import { UsersService } from 'src/app/services/user-table.service';
+import { UsersTableService } from 'src/app/services/user-table.service';
 
 @Injectable()
-export class UsersEffects {
-  constructor(private actions$: Actions, private usersService: UsersService) {}
+export class UsersTableEffects {
+  constructor(
+    private actions$: Actions,
+    private usersService: UsersTableService
+  ) {}
 
   loadUsers$ = createEffect(() => {
     return this.actions$.pipe(

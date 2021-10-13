@@ -1,5 +1,5 @@
 import { map } from 'rxjs/operators';
-import { User } from 'src/app/models/user-table.model';
+import { User } from 'src/app/models/user.model';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-export class UsersService {
+export class UsersTableService {
   constructor(private _http: HttpClient) {}
 
   getUsers(): Observable<User[]> {

@@ -1,21 +1,26 @@
 .table {
   border-collapse: collapse;
+  margin: 0 5px;
 }
 
 .heading {
   position: relative;
+  padding: 5px 0;
   width: 200px;
+  height: 30px;
   text-align: center;
   border: 1px solid black;
+  background-color: rgb(238, 186, 168);
 
   &:first-child {
-    width: 20px;
+    width: 30px;
   }
 }
 
 .cell {
   text-align: left;
   border: 1px solid black;
+  padding: 5px;
 
   &:first-child {
     text-align: center;
@@ -23,8 +28,12 @@
 }
 
 .sort-btn {
-  height: 20px;
   position: absolute;
-  top: 0;
-  right: 0;
+  height: 20px;
+  width: 30px;
+  border: none;
+  border-radius: 2px;
+  background-color: coral;
+  top: 5px;
+  right: 5px;
 }
