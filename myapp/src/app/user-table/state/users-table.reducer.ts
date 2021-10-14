@@ -29,7 +29,7 @@ const _usersTableReducer = createReducer(
   on(searchInUsersTable, (state, action) => {
     return {
       ...state,
-      users: [...state.users].filter((user: any) => {
+      users: [...state.usersFetchedData].filter((user: any) => {
         return user[action.searchColoumn]
           .toLowerCase()
           .includes(action.searchData);
